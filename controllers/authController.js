@@ -49,7 +49,21 @@ const signup = async (req, res) => {
     }
 }
 
+const getAllUAccount = async (req,res) => {
+    try {
+        const existUser = await authModel.find()
+        
+        if(!authModel) return res.json({ status: 404, message: 'Data belum ada!' })
+
+        return res.json({ status: 200, message: 'Berhasil ambil data', data: existUser })
+
+    } catch (error) {
+        return res.json({ status: 500, message: 'Failed to signUp', error: error });
+    }
+}
+
 module.exports = {
     signin,
-    signup
+    signup,
+    getAllUAccount
 }
