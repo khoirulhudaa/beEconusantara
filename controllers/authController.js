@@ -69,7 +69,7 @@ const updateAccount = async (req, res) => {
         const { user_id } = req.params; 
         const newData = req.body; 
     
-        const updatedData = await authModel.findByIdAndUpdate(user_id, newData, { new: true });
+        const updatedData = await authModel.findByIdAndUpdate({user_id}, newData, { new: true });
     
         if (!updatedData) {
           return res.status(404).json({ message: 'Data tidak ada!' });
