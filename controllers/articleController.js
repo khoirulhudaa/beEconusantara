@@ -38,14 +38,15 @@ const getAllArticle = async (req, res) => {
 
 const updateArticle = async (req, res) => {
     try {
-        const { article_id } = req.params; 
-        const newData = req.body; 
-    
-        const updatedData = await articleModel.findByIdAndUpdate(article_id, newData, { new: true });
-    
-        if (!updatedData) {
-          return res.status(404).json({ message: 'Data tidak ada!' });
-        }
+        const { article_id } = req.params
+        const { name_article, content } = req.body
+
+        const existArticle = await articleModel.findOne({ article_id })
+        if(!existArticle) return res.json({ status: 404, message: 'Data tidak ada!' })
+
+        existArticle.name_article = name_article
+        existArticle.content = content
+        existArticle.save()
     
         return res.json({ status: 200, message: 'Berhasil perbarui data!' });
    

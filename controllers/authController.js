@@ -66,14 +66,15 @@ const getAllUAccount = async (req,res) => {
 const updateAccount = async (req, res) => {
     try {
 
-        const { user_id } = req.params; 
-        const newData = req.body; 
-    
-        const updatedData = await authModel.findByIdAndUpdate({user_id}, newData, { new: true });
-    
-        if (!updatedData) {
-          return res.status(404).json({ message: 'Data tidak ada!' });
-        }
+        const { user_id } = req.params
+        const { username, email } = req.body
+
+        const existUser = await authModel.findOne({ user_id })
+        if(!existUser) return res.json({ status: 404, message: 'Data tidak ada!' })
+
+        existUser.username = username
+        existUser.email = email
+        existUser.save()
     
         return res.json({ status: 200, message: 'Berhasil perbarui data!' });
         

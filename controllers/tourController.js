@@ -41,15 +41,19 @@ const getAllTour = async (req, res) => {
 
 const updateTour = async (req, res) => {
     try {
-        const { tour_id } = req.params; 
-        const newData = req.body; 
-    
-        // Lakukan update data menggunakan Mongoose
-        const updatedData = await tourModel.findByIdAndUpdate(tour_id, newData, { new: true });
-    
-        if (!updatedData) {
-          return res.status(404).json({ message: 'Data not found' });
-        }
+        const { tour_id } = req.params
+        const { name_location, lat, long, address, link, thumbnail } = req.body
+
+        const existTour = await tourModel.findOne({ tour_id })
+        if(!existTour) return res.json({ status: 404, message: 'Data tidak ada!' })
+
+        existTour.name_location = name_location
+        existTour.lat = lat
+        existTour.long = long
+        existTour.address = address
+        existTour.link = link
+        existTour.thumbnail = thumbnail
+        existTour.save()
     
         return res.json({ status: 200, message: 'Berhasil perbarui data!' });
     } catch (error) {

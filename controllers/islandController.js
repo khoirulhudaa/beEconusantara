@@ -36,14 +36,14 @@ const getAllIsland = async (req, res) => {
 
 const updateIsland = async (req, res) => {
     try {
-        const { island_id } = req.params; 
-        const newData = req.body; 
-    
-        const updatedData = await islandModel.findByIdAndUpdate(island_id, newData, { new: true });
-    
-        if (!updatedData) {
-          return res.status(404).json({ message: 'Data tidak ada!' });
-        }
+        const { island_id } = req.params
+        const { name_island } = req.body
+
+        const existIsland = await islandModel.findOne({ island_id })
+        if(!existIsland) return res.json({ status: 404, message: 'Data tidak ada!' })
+
+        existIsland.name_island = name_island
+        existIsland.save()
     
         return res.json({ status: 200, message: 'Berhasil perbarui data!' });
    
