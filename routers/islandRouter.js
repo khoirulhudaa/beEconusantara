@@ -5,6 +5,6 @@ const islandController = require('../controllers/islandController')
 router.post('/', islandController.createIsland)
 router.get('/', islandController.getAllIsland)
 router.post('/update/:island_id', islandController.updateIsland)
-router.post('/remove/:island_id', islandController.removeCoordinate)
+router.post('/remove/:island_id', islandController.removeIsland)
 
 module.exports = router

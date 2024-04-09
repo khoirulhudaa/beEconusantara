@@ -45,7 +45,7 @@ const articleRouterAPI = require('./routers/articlelRouterAPI')
 const islandRouterAPI = require('./routers/islandRouterAPI')
 const tourRouterAPI = require('./routers/tourRouterAPI')
 
-app.use('/akun', accountRouter)
+app.use('/account', accountRouter)
 app.use('/article', checkToken, articleRouter)
 app.use('/island', checkToken, islandRouter)
 app.use('/tour', checkToken, tourRouter)
