@@ -11,7 +11,7 @@ module.exports = async (req, res, next) => {
         });
     }
 
-    jwt.verify(token, 'geospasial', function (error) {
+    jwt.verify(token, 'ecoNusantara', function (error) {
         if (error) {
             return res.status(403).json({
                 status: false,
