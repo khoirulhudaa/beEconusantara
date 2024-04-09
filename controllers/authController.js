@@ -25,7 +25,7 @@ const signin = async (req, res) => {
 
 const signup = async (req, res) => {
     try {
-        const { email, password } = req.body
+        const { username, email, password } = req.body
        
         const existUser = await authModel.findOne({ email })
         if(existUser) return res.json({ status: 400, message: 'Email sudah terpakai!' })
@@ -37,6 +37,7 @@ const signup = async (req, res) => {
 
         const newuser = new authModel({
             user_id: tokenRandom,
+            username,
             email,
             password: passwordHashGenerate,
         })
