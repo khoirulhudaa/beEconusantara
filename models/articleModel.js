@@ -17,6 +17,10 @@ const articleModel = new mongoose.Schema({
         type: String,
         required: true
     },
+    description: {
+        type: String,
+        default: '-'
+    },
     year: {
         type: Number,
         default: new Date().getFullYear()    

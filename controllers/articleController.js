@@ -3,7 +3,7 @@ const crypto = require('crypto')
 
 const createArticle = async (req, res) => {
     try {
-        const { name_article, content, thumbnail } = req.body
+        const { name_article, description, content, thumbnail } = req.body
 
         const tokenRandom = crypto.randomBytes(5).toString('hex')
 
@@ -11,6 +11,7 @@ const createArticle = async (req, res) => {
             article_id: tokenRandom,
             name_article,
             content,
+            description,
             thumbnail,
         })
 
@@ -39,13 +40,14 @@ const getAllArticle = async (req, res) => {
 const updateArticle = async (req, res) => {
     try {
         const { article_id } = req.params
-        const { name_article, content } = req.body
+        const { name_article, content, description } = req.body
 
         const existArticle = await articleModel.findOne({ article_id })
         if(!existArticle) return res.json({ status: 404, message: 'Data tidak ada!' })
 
         existArticle.name_article = name_article
         existArticle.content = content
+        existArticle.description = description
         existArticle.save()
     
         return res.json({ status: 200, message: 'Berhasil perbarui data!' });
