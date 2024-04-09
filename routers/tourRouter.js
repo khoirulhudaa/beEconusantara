@@ -4,7 +4,7 @@ const tourController = require('../controllers/tourController')
 
 router.post('/', tourController.createTour)
 router.get('/', tourController.getAllTour)
-router.post('/update/:island_id', tourController.updateTour)
-router.post('/remove/:island_id', tourController.removeCoordinate)
+router.post('/update/:tour_id', tourController.updateTour)
+router.post('/remove/:tour_id', tourController.removeCoordinate)
 
 module.exports = router
