@@ -42,7 +42,7 @@ const updateIsland = async (req, res) => {
         const updatedData = await islandModel.findByIdAndUpdate(island_id, newData, { new: true });
     
         if (!updatedData) {
-          return res.status(404).json({ message: 'Data tidakada!' });
+          return res.status(404).json({ message: 'Data tidak ada!' });
         }
     
         return res.json({ status: 200, message: 'Berhasil perbarui data!' });

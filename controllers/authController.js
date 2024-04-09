@@ -63,8 +63,28 @@ const getAllUAccount = async (req,res) => {
     }
 }
 
+const updateAccount = async (req, res) => {
+    try {
+
+        const { user_id } = req.params; 
+        const newData = req.body; 
+    
+        const updatedData = await authModel.findByIdAndUpdate(user_id, newData, { new: true });
+    
+        if (!updatedData) {
+          return res.status(404).json({ message: 'Data tidak ada!' });
+        }
+    
+        return res.json({ status: 200, message: 'Berhasil perbarui data!' });
+        
+    } catch (error) {
+        return res.json({ status: 500, message: 'Failed to signUp', error: error });
+    }
+}
+
 module.exports = {
     signin,
     signup,
-    getAllUAccount
+    getAllUAccount,
+    updateAccount
 }
