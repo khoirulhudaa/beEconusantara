@@ -82,9 +82,25 @@ const updateAccount = async (req, res) => {
     }
 }
 
+const removeAccount = async (req, res) => {
+    try {
+        
+        const { user_id } = req.params
+
+        const existUser = await authModel.findOneAndDelete({ user_id })
+        if(!existUser) return res.json({ status: 404, message: 'Data tidak ada!' })
+        
+        return res.json({ status: 200, message: 'Berhasil hapus data!', data: existUser })
+
+    } catch (error) {
+        return res.json({ status: 500, message: 'Failed to signUp', error: error });
+    }
+}
+
 module.exports = {
     signin,
     signup,
     getAllUAccount,
-    updateAccount
+    updateAccount,
+    removeAccount
 }
