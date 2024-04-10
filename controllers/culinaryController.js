@@ -43,7 +43,7 @@ const getAllCulinary = async (req, res) => {
 const updateCulinary = async (req, res) => {
     try {
         const { culinary_id } = req.params
-        const { name_culinary, lat, icon, long, address, link, thumbnail } = req.body
+        const { name_culinary, lat, island, icon, long, address, link, thumbnail } = req.body
 
         const existCulinary = await culinaryModel.findOne({ culinary_id })
         if(!existCulinary) return res.json({ status: 404, message: 'Data tidak ada!' })
@@ -51,6 +51,7 @@ const updateCulinary = async (req, res) => {
         existCulinary.name_culinary = name_culinary
         existCulinary.lat = lat
         existCulinary.long = long
+        existCulinary.island = island
         existCulinary.icon = icon
         existCulinary.address = address
         existCulinary.link = link

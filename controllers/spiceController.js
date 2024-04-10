@@ -43,7 +43,7 @@ const getAllSpice = async (req, res) => {
 const updateSpice = async (req, res) => {
     try {
         const { spice_id } = req.params
-        const { name_spice, lat, icon, long, address, link, thumbnail } = req.body
+        const { name_spice, lat, island, icon, long, address, link, thumbnail } = req.body
 
         const existSpice = await spiceModel.findOne({ spice_id })
         if(!existSpice) return res.json({ status: 404, message: 'Data tidak ada!' })
@@ -51,6 +51,7 @@ const updateSpice = async (req, res) => {
         existSpice.name_spice = name_spice
         existSpice.lat = lat
         existSpice.long = long
+        existSpice.island = island
         existSpice.icon = icon
         existSpice.address = address
         existSpice.link = link
