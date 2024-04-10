@@ -42,12 +42,14 @@ const tourRouter = require('./routers/tourRouter')
 const islandRouter = require('./routers/islandRouter')
 const spiceRouter = require('./routers/spiceRouter')
 const culinaryRouter = require('./routers/culinaryRouter')
+const contactRouter = require('./routers/contactRouter')
 
 const articleRouterAPI = require('./routers/articlelRouterAPI')
 const islandRouterAPI = require('./routers/islandRouterAPI')
 const tourRouterAPI = require('./routers/tourRouterAPI')
 const spiceRouterAPI = require('./routers/spiceRouterAPI')
 const culinaryRouterAPI = require('./routers/culinaryRouterAPI')
+const contactRouterAPI = require('./routers/contactRouterAPI')
 
 app.use('/account', accountRouter)
 app.use('/article', checkToken, articleRouter)
@@ -55,6 +57,7 @@ app.use('/island', checkToken, islandRouter)
 app.use('/tour', checkToken, tourRouter)
 app.use('/spice', checkToken, spiceRouter)
 app.use('/culinary', checkToken, culinaryRouter)
+app.use('/contact', checkToken, contactRouter)
 
 // Public API
 app.use('/v1/api/article', articleRouterAPI)
@@ -62,6 +65,7 @@ app.use('/v1/api/island', islandRouterAPI)
 app.use('/v1/api/tour', tourRouterAPI)
 app.use('/v1/api/spice', spiceRouterAPI)
 app.use('/v1/api/culinary', culinaryRouterAPI)
+app.use('/v1/api/contact', contactRouterAPI)
 
 app.get('/test', (req, res) => {
     res.send('test success!')   
