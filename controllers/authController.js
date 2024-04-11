@@ -1,5 +1,4 @@
 const authModel = require('../models/authModel')
-const bcrypt = require('bcryptjs')
 const jsonwebtoken = require('jsonwebtoken')
 const crypto = require('crypto')
 
@@ -14,7 +13,7 @@ const signin = async (req, res) => {
         const isMatch = password === existUser.password
         if(!isMatch) return res.json({ status: 401, message: 'Kata sandi salah!' })
 
-        const token = jsonwebtoken.sign({ user_id: existUser.email }, 'ecoNusantara', { expiresIn: '5h' })
+        const token = jsonwebtoken.sign({ user_id: existUser.email }, 'ecoNusantara', { expiresIn: '1h' })
 
         return res.json({ status: 200, message: 'Successfully signin!', token, data: existUser })
 
