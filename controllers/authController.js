@@ -11,7 +11,7 @@ const signin = async (req, res) => {
         const existUser = await authModel.findOne({ email })
         if(!existUser) return res.json({ status: 404, message: 'User tidak ditemukan!' })
        
-        const isMatch = bcrypt.compare(password, existUser.password)
+        const isMatch = password === existUser.password
         if(!isMatch) return res.json({ status: 401, message: 'Kata sandi salah!' })
 
         const token = jsonwebtoken.sign({ user_id: existUser.email }, 'ecoNusantara', { expiresIn: '5h' })
@@ -32,14 +32,11 @@ const signup = async (req, res) => {
  
         const tokenRandom = crypto.randomBytes(6).toString('hex')
           
-        const salt = await bcrypt.genSalt(10)
-        const passwordHashGenerate = await bcrypt.hash(password, salt)
-
         const newuser = new authModel({
             user_id: tokenRandom,
             username,
             email,
-            password: passwordHashGenerate,
+            password
         })
 
         await newuser.save()
