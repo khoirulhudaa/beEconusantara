@@ -9,6 +9,10 @@ const contactModel = new mongoose.Schema({
         type: String,
         required: true
     },
+    photo: {
+        type: String,
+        default: 'default.jpg'
+    },
     number: {
         type: Number,
         required: true
