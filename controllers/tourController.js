@@ -42,7 +42,7 @@ const getAllTour = async (req, res) => {
 const updateTour = async (req, res) => {
     try {
         const { tour_id } = req.params
-        const { name_location, lat, long, address, link, thumbnail } = req.body
+        const { name_location, island, lat, long, address, link, thumbnail } = req.body
 
         const existTour = await tourModel.findOne({ tour_id })
         if(!existTour) return res.json({ status: 404, message: 'Data tidak ada!' })
@@ -50,6 +50,7 @@ const updateTour = async (req, res) => {
         existTour.name_location = name_location
         existTour.lat = lat
         existTour.long = long
+        existTour.island = island
         existTour.address = address
         existTour.link = link
         existTour.thumbnail = thumbnail
