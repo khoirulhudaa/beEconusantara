@@ -1,4 +1,4 @@
-const EventModel = require('../models/EventModel')
+const EventModel = require('../models/eventModel')
 const crypto = require('crypto')
 const cloudinary = require('cloudinary').v2
 
