@@ -2,6 +2,7 @@ const Email = require('../models/emaiModel')
 const nodemailer = require('nodemailer')
 const path = require('path')
 const fs = require('fs')
+const crypto = require('crypto')
 
 const addNewEmail = async (req, res) => {
     try {

@@ -62,8 +62,8 @@ app.use('/tour', checkToken, tourRouter)
 app.use('/spice', checkToken, spiceRouter)
 app.use('/culinary', checkToken, culinaryRouter)
 app.use('/contact', checkToken, contactRouter)
-app.use('/email', emailRouter)
-app.use('/event', eventRouter)
+app.use('/email', checkToken, emailRouter)
+app.use('/event', checkToken, eventRouter)
 
 // Public API
 app.use('/v1/api/article', articleRouterAPI)
