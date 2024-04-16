@@ -52,6 +52,8 @@ const tourRouterAPI = require('./routers/tourRouterAPI')
 const spiceRouterAPI = require('./routers/spiceRouterAPI')
 const culinaryRouterAPI = require('./routers/culinaryRouterAPI')
 const contactRouterAPI = require('./routers/contactRouterAPI')
+const emailRouterAPI = require('./routers/emailRouterAPI')
+const eventRouterAPI = require('./routers/eventRouterAPI')
 
 app.use('/account', accountRouter)
 app.use('/article', checkToken, articleRouter)
@@ -70,6 +72,8 @@ app.use('/v1/api/tour', tourRouterAPI)
 app.use('/v1/api/spice', spiceRouterAPI)
 app.use('/v1/api/culinary', culinaryRouterAPI)
 app.use('/v1/api/contact', contactRouterAPI)
+app.use('/v1/api/email', emailRouterAPI)
+app.use('/v1/api/event', eventRouterAPI)
 
 app.get('/test', (req, res) => {
     res.send('test success!')   
