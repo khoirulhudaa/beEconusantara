@@ -3,7 +3,7 @@ const crypto = require('crypto')
 
 const createArticle = async (req, res) => {
     try {
-        const { name_article, description, content, thumbnail } = req.body
+        const { name_article, description, content } = req.body
 
         const tokenRandom = crypto.randomBytes(5).toString('hex')
 
@@ -12,7 +12,6 @@ const createArticle = async (req, res) => {
             name_article,
             content,
             description,
-            thumbnail,
         })
 
         await newArticle.save()

@@ -43,6 +43,8 @@ const islandRouter = require('./routers/islandRouter')
 const spiceRouter = require('./routers/spiceRouter')
 const culinaryRouter = require('./routers/culinaryRouter')
 const contactRouter = require('./routers/contactRouter')
+const emailRouter = require('./routers/emailRouter')
+const eventRouter = require('./routers/eventRouter')
 
 const articleRouterAPI = require('./routers/articlelRouterAPI')
 const islandRouterAPI = require('./routers/islandRouterAPI')
@@ -58,6 +60,8 @@ app.use('/tour', checkToken, tourRouter)
 app.use('/spice', checkToken, spiceRouter)
 app.use('/culinary', checkToken, culinaryRouter)
 app.use('/contact', checkToken, contactRouter)
+app.use('/email', emailRouter)
+app.use('/event', eventRouter)
 
 // Public API
 app.use('/v1/api/article', articleRouterAPI)

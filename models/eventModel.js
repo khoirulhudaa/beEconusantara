@@ -1,13 +1,17 @@
 const mongoose = require('mongoose')
 
-const articleModel = new mongoose.Schema({
-    article_id: {
+const eventModel = new mongoose.Schema({
+    event_id: {
         type: String,
         required: true
     },
-    name_article: {
+    name_event: {
         type: String,
         required: true
+    },
+    thumbnail: {
+        type: String,
+        default: 'Default.jpg'
     },
     content: {
         type: String,
@@ -27,4 +31,4 @@ const articleModel = new mongoose.Schema({
     },
 })
 
-module.exports = mongoose.model('article', articleModel)
+module.exports = mongoose.model('event', eventModel)

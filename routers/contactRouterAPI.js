@@ -4,4 +4,4 @@ const contactController = require('../controllers/contactController')
 
 router.get('/', contactController.getAllContact)
 
-module.exports = router
+module.exports = router 
