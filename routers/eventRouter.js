@@ -6,7 +6,7 @@ const upload = multer()
 
 router.post('/', upload.single('thumbnail'), eventController.createEvent)
 router.get('/', eventController.getAllEvent)
-router.post('/update/:event_id', eventController.updateEvent)
+router.post('/update/:event_id', upload.single('thumbnail'), eventController.updateEvent)
 router.post('/remove/:event_id', eventController.removeEvent)
 
 module.exports = router
