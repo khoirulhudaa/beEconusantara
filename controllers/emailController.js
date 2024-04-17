@@ -83,7 +83,7 @@ const getAllEmail = async (req, res) => {
     try {
         const existEmail = await Email.find()
         
-        if(!emailModel) return res.json({ status: 404, message: 'Email belum ada!' })
+        if(!existEmail) return res.json({ status: 404, message: 'Email belum ada!' })
 
         return res.json({ status: 200, message: 'Berhasil ambil email', data: existEmail })
     } catch (error) {
