@@ -85,8 +85,8 @@ const updateEvent = async (req, res) => {
             thumbnail = `${randomChars}_${originalName}`;
 
             try {
-                if(existContact.thumbnail !== 'default.jpg') {
-                    await cloudinary.uploader.destroy(existContact.thumbnail);
+                if(existEvent.thumbnail !== 'default.jpg') {
+                    await cloudinary.uploader.destroy(existEvent.thumbnail);
                 }
                 await new Promise((resolve, reject) => {
                     cloudinary.uploader.upload_stream({ public_id: thumbnail }, (error, result) => {
