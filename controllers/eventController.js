@@ -74,6 +74,8 @@ const updateEvent = async (req, res) => {
         const { event_id } = req.params
         const { name_event, content, description } = req.body
 
+        console.log(req.body)
+
         const existEvent = await EventModel.findOne({ event_id })
         if(!existEvent) return res.json({ status: 404, message: 'Data tidak ada!' })
 
