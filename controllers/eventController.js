@@ -103,7 +103,7 @@ const updateEvent = async (req, res) => {
             } catch (cloudinaryError) {
                 console.error('Cloudinary upload error:', cloudinaryError);
                 return res.json({ status: 500, message: 'Failed to update Group due to Cloudinary error!' });
-            }
+            }EventModel
         }
 
         const updateFields = { name_event, description, content };
@@ -111,7 +111,7 @@ const updateEvent = async (req, res) => {
             updateFields.thumbnail = thumbnail;
         }
 
-        const updateEvent = await eventModel.findOneAndUpdate(
+        const updateEvent = await EventModel.findOneAndUpdate(
             { event_id },
             { $set: updateFields },
             { new: true }
