@@ -95,7 +95,7 @@ const removeEmailUser = async (req, res) => {
     try {
         const { email_id } = req.params
 
-        const existEmail = await emailModel.findOneAndDelete({ email_id })
+        const existEmail = await Email.findOneAndDelete({ email_id })
         if(!existEmail) return res.json({ status: 404, message: 'Email tidak ada!' })
         
         return res.json({ status: 200, message: 'Berhasil hapus data!', data: existEmail })
