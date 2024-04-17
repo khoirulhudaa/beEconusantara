@@ -79,7 +79,7 @@ const updateEvent = async (req, res) => {
         const existEvent = await EventModel.findOne({ event_id })
         if(!existEvent) return res.json({ status: 404, message: 'Data tidak ada!' })
 
-        let thumbnail = 'default.jpg';
+        let thumbnail = null;
 
         if (req.file) {
             const originalName = req.file.originalname;
@@ -109,7 +109,7 @@ const updateEvent = async (req, res) => {
         }
 
         const updateFields = { name_event, description, content };
-        if (thumbnail) {
+        if (thumbnail !== null) {
             updateFields.thumbnail = thumbnail;
         }
 
