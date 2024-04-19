@@ -53,10 +53,9 @@ const createMessageEmailAllUser = async (req,res) => {
                 </head>
                 <body>
                     <div class="container">
-                        <h2>Berita Nusantara - ${new Date().getFullYear()}!</h2>
-                        <p style='color: black;line-height: 2em;margin-top: 14px;'>
-                            ${message}
-                        </p>
+                        <h2>ecousantara - ${new Date().getFullYear()}!</h2>
+                        <br />
+                        <div dangerouslySetInnerHTML={{ __html: ${message} }}></div>
                     </div>
                 </body>
             </html>
@@ -64,15 +63,15 @@ const createMessageEmailAllUser = async (req,res) => {
   
         const mailOptions = {
             to: emails.map(data => data.email).join(','),
-            from: 'ecoNusantara111@gmail.com',
+            from: 'muhammadkhoirulhuda111@gmail.com',
             subject: subject,
             html: emailContent
         }
   
         transporter.sendMail(mailOptions, async (err) => {
-            if(err) return res.json({ status: 500, message: 'Gagal kirim email saat transfer!', error: err.message })
+            if(err) return res.json({ status: 500, message: 'Gagal kirim email saat transfer!', error: err })
             
-            res.json({ status: 500, message: 'Gagal Kirim Pesan!', error: err.message })
+            return res.json({ status: 200, message: 'Berhasil Kirim Pesan!' })
         })
     } catch (error) {
         return res.json({ status: 500, message: 'Proses gagal!', error: error });
