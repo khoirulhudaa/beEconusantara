@@ -55,7 +55,7 @@ const createMessageEmailAllUser = async (req,res) => {
                     <div class="container">
                         <h2>ecousantara - ${new Date().getFullYear()}!</h2>
                         <br />
-                        <div dangerouslySetInnerHTML={{ __html: ${message} }}></div>
+                        <div className='custom-content' dangerouslySetInnerHTML={{ __html: ${message} }}></div>
                     </div>
                 </body>
             </html>
