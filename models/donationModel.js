@@ -9,6 +9,10 @@ const donationModel = new mongoose.Schema({
         type: String,
         required: true
     },
+    link_donation: {
+        type: String,
+        required: true
+    },
     thumbnail: {
         type: String,
         default: 'Default.jpg'

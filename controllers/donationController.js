@@ -10,7 +10,7 @@ cloudinary.config({
 
 const createDonation = async (req, res) => {
     try {
-        const { name_donation, description, content } = req.body
+        const { name_donation, link_donation, content } = req.body
 
         const tokenRandom = crypto.randomBytes(5).toString('hex')
         
@@ -43,7 +43,7 @@ const createDonation = async (req, res) => {
             donation_id: tokenRandom,
             name_donation,
             content,
-            description,
+            link_donation,
             thumbnail,
         })
 
@@ -72,7 +72,7 @@ const getAllDonation = async (req, res) => {
 const updateDonation = async (req, res) => {
     try {
         const { donation_id } = req.params
-        const { name_donation, content, description } = req.body
+        const { name_donation, content, link_donation } = req.body
 
         console.log(req.body)
 
@@ -108,7 +108,7 @@ const updateDonation = async (req, res) => {
             }
         }
 
-        const updateFields = { name_donation, description, content };
+        const updateFields = { name_donation, link_donation, content };
         if (thumbnail !== null) {
             updateFields.thumbnail = thumbnail;
         }
