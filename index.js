@@ -45,6 +45,7 @@ const culinaryRouter = require('./routers/culinaryRouter')
 const contactRouter = require('./routers/contactRouter')
 const eventRouter = require('./routers/eventRouter')
 const emailRouter = require('./routers/emailRouter')
+const donationRouter = require('./routers/donationRouter')
 
 const articleRouterAPI = require('./routers/articlelRouterAPI')
 const islandRouterAPI = require('./routers/islandRouterAPI')
@@ -64,6 +65,7 @@ app.use('/culinary', checkToken, culinaryRouter)
 app.use('/contact', checkToken, contactRouter)
 app.use('/email', checkToken, emailRouter)
 app.use('/event', checkToken, eventRouter)
+app.use('/donation', checkToken, donationRouter)
 
 // Public API
 app.use('/v1/api/article', articleRouterAPI)
