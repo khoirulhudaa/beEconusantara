@@ -55,6 +55,7 @@ const culinaryRouterAPI = require('./routers/culinaryRouterAPI')
 const contactRouterAPI = require('./routers/contactRouterAPI')
 const eventRouterAPI = require('./routers/eventRouterAPI')
 const emailRouterAPI = require('./routers/emailRouterAPI')
+const donationRouterAPI = require('./routers/donationRouterAPI')
 
 app.use('/account', accountRouter)
 app.use('/article', checkToken, articleRouter)
@@ -76,6 +77,7 @@ app.use('/v1/api/culinary', culinaryRouterAPI)
 app.use('/v1/api/contact', contactRouterAPI)
 app.use('/v1/api/email', emailRouterAPI)
 app.use('/v1/api/event', eventRouterAPI)
+app.use('/v1/api/donation', donationRouterAPI)
 
 app.get('/test', (req, res) => {
     res.send('test success!')   
