@@ -7,7 +7,7 @@ body {
 
 .container {
     background-color: #fff;
-    width: 375px;
+    width: 95%;
     height: max-content;
     padding: 20px 0;
     text-align: left;
@@ -32,4 +32,17 @@ a {
     font-weight: bold;
     margin: 20px auto;
     display: inline-block;
+}
+
+
+@media screen and (max-width: 570px) {
+    .container {
+        background-color: #fff;
+        width: 375px;
+        height: max-content;
+        padding: 20px 0;
+        text-align: left;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
 }
