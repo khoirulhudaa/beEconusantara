@@ -63,7 +63,7 @@ const createMessageEmailAllUser = async (req,res) => {
   
         const mailOptions = {
             to: emails.map(data => data.email).join(','),
-            from: 'muhammadkhoirulhuda111@gmail.com',
+            from: 'ecoNusantara111@gmail.com',
             subject: subject,
             html: emailContent
         }
